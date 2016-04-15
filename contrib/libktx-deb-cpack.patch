@@ -1,0 +1,25 @@
+diff --git a/build/cmake/linux/Release/CMakeLists.txt b/build/cmake/linux/Release/CMakeLists.txt
+index 4fddee7..b36c7f6 100644
+--- a/build/cmake/linux/Release/CMakeLists.txt
++++ b/build/cmake/linux/Release/CMakeLists.txt
+@@ -526,3 +526,20 @@ target_link_libraries(gl3loadtests
+ )
+ unset(TOOLSET)
+ unset(TARGET)
++
++install(
++    TARGETS libktx_gl
++    RUNTIME DESTINATION bin
++    LIBRARY DESTINATION lib
++    ARCHIVE DESTINATION lib
++)
++
++set(CPACK_GENERATOR DEB)
++set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Mathrioshka Team <we@mathrioshka.ru>")
++set(CPACK_PACKAGE_NAME "libktx")
++set(CPACK_PACKAGE_FILE_NAME "libktx")
++set(CPACK_PACKAGE_VERSION_MAJOR 0)
++set(CPACK_PACKAGE_VERSION_MINOR 1)
++set(CPACK_PACKAGE_VERSION_PATCH 0)
++set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "libKTX - lightweight library for working with KTX texture format")
++include(CPack)

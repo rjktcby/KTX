@@ -1,0 +1,31 @@
+diff --git a/build/cmake/linux/Release/CMakeLists.txt b/build/cmake/linux/Release/CMakeLists.txt
+index 4fddee7..be34dd0 100644
+--- a/build/cmake/linux/Release/CMakeLists.txt
++++ b/build/cmake/linux/Release/CMakeLists.txt
+@@ -526,3 +526,26 @@ target_link_libraries(gl3loadtests
+ )
+ unset(TOOLSET)
+ unset(TARGET)
++
++install(
++    DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/../../../../include/"
++    DESTINATION include
++    COMPONENT dev
++)
++install(
++    DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/../../../../other_include/KHR"
++    DESTINATION include
++    COMPONENT dev
++)
++
++set(CPACK_GENERATOR DEB)
++set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Mathrioshka Team <we@mathrioshka.ru>")
++set(CPACK_PACKAGE_NAME "libktx-dev")
++set(CPACK_PACKAGE_FILE_NAME "libktx-dev")
++set(CPACK_PACKAGE_VERSION_MAJOR 0)
++set(CPACK_PACKAGE_VERSION_MINOR 1)
++set(CPACK_PACKAGE_VERSION_PATCH 0)
++set(CPACK_DEBIAN_PACKAGE_DEPENDS "libktx, libgl1-mesa-dev | libgl-dev")
++set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Development package for libKTX")
++
++include(CPack)
